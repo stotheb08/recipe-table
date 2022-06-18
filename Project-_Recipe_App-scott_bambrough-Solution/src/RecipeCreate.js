@@ -16,11 +16,17 @@ function RecipeCreate({handleSetRecipes}) {
   
   const handleSubmit = (event) => {
     event.preventDefault()
-    handleSetRecipes(formData)
-    setFormData({...initialFormData})
+    if (validate(formData)) {handleSetRecipes(formData)
+    setFormData({...initialFormData})}
+
   }
+
+  const validate = (formData) => {
+    return formData.name && formData.cuisine && formData.photo && formData.ingredients && formData.preparation
   const handleOnChange = ({target}) => {
     setFormData({...formData, [target.name]: target.value,})  
+    
+    
   }
   
   
